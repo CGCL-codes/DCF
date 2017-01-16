@@ -9,14 +9,11 @@
 ### Build example
 
 ## Author and Copyright
-The Dynamic Cuckoo Filter
 
 Liangyi Liao (liaoliangyi@hust.edu.cn)
 Hanhua Chen (chen@hust.edu.cn)
 
-Copyright (C) 2017, [STCS&CGCL](http://grid.hust.edu.cn/).
-
-This product includes software developed at Huazhong University of Science and Technology (http://www.hust.edu.cn).
+Copyright (C) 2017, [STCS & CGCL](http://grid.hust.edu.cn/) and [Huazhong University of Science and Technology](http://www.hust.edu.cn).
 
 ## Acknowledgement
 
