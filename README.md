@@ -11,11 +11,12 @@
 ## Author and Copyright
 The Dynamic Cuckoo Filter
 
-Copyright (C) 2017, Liangyi Liao (liaoliangyi@hust.edu.cn), Hanhua Chen (chen@hust.edu.cn).
+Liangyi Liao (liaoliangyi@hust.edu.cn)
+Hanhua Chen (chen@hust.edu.cn)
+
+Copyright (C) 2017, [STCS&CGCL](http://grid.hust.edu.cn/).
 
 This product includes software developed at Huazhong University of Science and Technology (http://www.hust.edu.cn).
-
-More detial please refer to NOTICE file.
 
 ## Acknowledgement
 
