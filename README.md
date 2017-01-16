@@ -7,8 +7,11 @@ Through our experiment, DCF achieves 75% reduction in memory cost, 50% improveme
 
 ## API
 Insert(item):
+
 Query(item):
+
 Delete(item):
+
 Compact(item):
 
 ## How to use?
