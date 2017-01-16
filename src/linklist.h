@@ -5,6 +5,8 @@
  *      Author: liaoliangyi
  */
 
+// The basic structure of DCF, a linklist of CFs
+
 #ifndef LINKLIST_H_
 #define LINKLIST_H_
 

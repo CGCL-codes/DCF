@@ -1,3 +1,13 @@
+/*
+ * cuckoofilter.h
+ *
+ *  Created on: Dec 21, 2016
+ *      Author: liaoliangyi
+ */
+
+// The implementation of cuckoo filter
+// Inspired by the thesis "Cuckoo Filter: Practically Better Than Bloom" in proceedings of ACM CoNEXT 2014 
+// This file is rewrite according to the source code of cuckoo filter (https://github.com/efficient/cuckoofilter)
 #ifndef CUCKOOFILTER_H_
 #define CUCKOOFILTER_H_
 

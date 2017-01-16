@@ -1,3 +1,15 @@
+/*
+ * hashfunction.h
+ *
+ *  Created on: Dec 21, 2016
+ *      Author: liaoliangyi
+ */
+
+
+// This file provides two hash functions "sha1" and "md5"
+// Both of the hash functions are depend on "OpenSSL" library
+// https://www.openssl.org/
+
 #ifndef HASHFUNCTION_H
 #define HASHFUNCTION_H
 

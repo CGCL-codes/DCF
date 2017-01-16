@@ -1,3 +1,12 @@
+/*
+ * test.cpp
+ *
+ *  Created on: Dec 21, 2016
+ *      Author: liaoliangyi
+ */
+
+// This file shows an example of the usage of most of the APIs
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <iostream>
@@ -39,12 +48,14 @@ Metric test(const Config config, string *data){
 
 	Metric metric;
 	metric.exp_BBN = 6;
+	//generate a DCF
 	DynamicCuckooFilter* dcf = new DynamicCuckooFilter(config.item_num, config.exp_FPR);
 
 
 	//**********insert**********
 	metric.I_time = clock();
 	for(size_t i = 0; i<config.item_num; i++){
+		//insert an item into DCF 
 		dcf->insertItem(data[i].c_str());
 	}
 	metric.I_time = clock() - metric.I_time;
@@ -58,6 +69,7 @@ Metric test(const Config config, string *data){
 
 	metric.Q_time = clock();
 	for(size_t i = 0; i<config.item_num; i++){
+		// query an item in DCF to determine the existence
 		if(dcf->queryItem(data[i].c_str()) == false){
 			cout << "Item not found" << endl;
 		};
@@ -85,6 +97,7 @@ Metric test(const Config config, string *data){
 	size_t count = 0;
 	metric.D_time = clock();
 	while(count < config.item_num){
+		// delete an item from DCF
 		dcf->deleteItem(data[count].c_str());
 		count += 1; //delete all the items
 	}
@@ -95,6 +108,7 @@ Metric test(const Config config, string *data){
 	//**********compact**********
 
 	int size_before = dcf->cf_list->num;
+	// an example of the compact process
 	dcf->compact();
 	int size_after = dcf->cf_list->num;
 

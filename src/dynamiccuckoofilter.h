@@ -1,3 +1,13 @@
+/*
+ * dynamiccuckoofilter.h
+ *
+ *  Created on: Dec 21, 2016
+ *      Author: liaoliangyi
+ */
+
+ // This file is the implementation of dynamiccuckoofilter
+ // The function "upperpower2" is apart of the source code written by Bin Fan , David G. Andersen and Michael Kaminsky 
+
 #ifndef DYNAMICCUCKOOFILTER_H_
 #define DYNAMICCUCKOOFILTER_H_
 

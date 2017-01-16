@@ -4,10 +4,16 @@
  *  Created on: Dec 21, 2016
  *      Author: liaoliangyi
  */
+
+// This file is inspired by "bitsutil.h" written by Bin Fan , David G. Andersen and Michael Kaminsky 
+// https://github.com/efficient/cuckoofilter/blob/master/src/bitsutil.h
+// Function "upperpower2" is moved to file dynamiccuckoofilter.h
+
 #ifndef BITHACK_H_
 #define BITHACK_H_
 
-//http://graphics.stanford.edu/~seander/bithacks.html
+// inspired from
+// http://www-graphics.stanford.edu/~seander/bithacks.html#ZeroInWord
 #define haszero4(x) (((x) - 0x1111ULL) & (~(x)) & 0x8888ULL)
 #define hasvalue4(x,n) (haszero4((x) ^ (0x1111ULL * (n))))
 
