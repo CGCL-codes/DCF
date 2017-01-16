@@ -16,11 +16,16 @@ Compact(item):
 Our implementation of DCF can be run in the linux with OpenSSL libiary. See more details in https://www.openssl.org.
 ### Build example
 Build the example:
+
 make test
+
 Run the example:
+
 ./test
+
 ### Configurations and Results
 Configurations including false pisitive, item number and dataset path can be costomized in "configuration/config.txt". Change the value after the symbol "=" ONLY!!!
+
 Results are show in "output/results.txt", including false positive, fingerprint size, building block number, operation time consumed and etc.
 
 
