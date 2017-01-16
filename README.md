@@ -12,7 +12,7 @@ Query(item):
 
 Delete(item):
 
-Compact(item):
+Compact():
 
 ## How to use?
 ### OpenSSL libiary
