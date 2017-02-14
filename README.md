@@ -11,7 +11,9 @@ The Dynamic Cuckoo Filter (DCF) is an efficient approximate membership test data
 ## API
 Generate DCF according to the expected maximum item number, expected false positive rate
 
-`DynamicCuckooFilter* dcf = new DynamicCuckooFilter(config.item_num, config.exp_FPR);`
+```c++
+DynamicCuckooFilter* dcf = new DynamicCuckooFilter(config.item_num, config.exp_FPR);
+```
 
 The expected building block number of DCF is set to 8 by default and can also be modified as follows
 
