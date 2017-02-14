@@ -9,7 +9,7 @@ The Dynamic Cuckoo Filter (DCF) is an efficient approximate membership test data
 
 ##Structure of DCF
 
-![DCF example](https://github.com/LiangyiLiao/TheDynamicCuckooFilter/blob/master/figure/DCFexample.pdf)
+![DCF example](https://github.com/LiangyiLiao/TheDynamicCuckooFilter/blob/master/figure/DCFexample.png)
 
 ## API
 Generate DCF according to the expected maximum item number, expected false positive rate
