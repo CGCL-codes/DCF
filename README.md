@@ -36,7 +36,7 @@ dcf->compact() //compact DCF
 Our implementation of DCF can be run in a Linux with OpenSSL libiary. See more details in https://www.openssl.org.
 ### Build and run the example:
 
-```c++
+```txt
 cd src/
 make test
 ./test
