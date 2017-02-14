@@ -10,13 +10,16 @@ The Dynamic Cuckoo Filter (DCF) is an efficient approximate membership test data
 
 ## API
 Generate DCF according to the expected maximum item number, expected false positive rate
+
 `DynamicCuckooFilter* dcf = new DynamicCuckooFilter(config.item_num, config.exp_FPR);`
 
 The expected building block number of DCF is set to 8 by default and can also be modified as follows
+
 `DynamicCuckooFilter* dcf = new DynamicCuckooFilter(config.item_num, config.exp_FPR, config.exp_BBN);`
 
 
 Four operations of DCF: Insert, Query, Delete and Compact
+
 `
 dcf->insertItem(item) // insert item ,item is a char* format
 dcf->queryItem(item)  //query item
@@ -28,6 +31,7 @@ dcf->compact() //compact DCF
 ### OpenSSL libiary
 Our implementation of DCF can be run in a Linux with OpenSSL libiary. See more details in https://www.openssl.org.
 ### Build and run the example:
+
 `
 cd src/
 make test
@@ -37,6 +41,7 @@ make test
 
 ### Configurations and Results
 Configurations including false pisitive, item number and dataset path can be costomized in "configuration/config.txt". Change the value after the symbol "=" ONLY!!!
+
 `
 false positive = 0.02
 item number = 1000000
@@ -44,6 +49,7 @@ input file path = input/input2.txt
 `
 
 Results are show in "output/results.txt", including false positive, fingerprint size, building block number, operation time consumed and etc.
+
 `
        item_num        exp_FPR     actual_FPR     actual_BBN   F_size(bits) space_cost(MB)      I_time(s)      Q_time(s)      D_time(s)    C_rate
         1000000           0.02       0.009292              9             12        1.76947       0.784629        1.05502        1.29057         1
