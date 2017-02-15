@@ -1,7 +1,7 @@
 # The Dynamic Cuckoo Filter
 
 ## Overview
-The Dynamic Cuckoo Filter (DCF) is an efficient approximate membership test data structure. Different from the classic Bloom filter and its variants, DCF is especially designed for highly dynamic dataset and support extending and reducing its capacity by adding and removing building blocks. The advantages of DCF is as follow
+The Dynamic Cuckoo Filter (DCF) is an efficient approximate membership test data structure. Different from the classic Bloom filter and its variants, DCF is especially designed for highly dynamic dataset and support extending and reducing its capacity by adding and removing building blocks. The advantages of DCF are as follows
 
 * The DCF design is the first to achieve both reliable item deletion and flexibly extending/reducing for approximate set representation and membership testing
 * DCF outperforms the state-of-the-art DBF design in terms of the capability of reliable item deletion
