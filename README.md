@@ -41,7 +41,7 @@ dcf->compact() //compact DCF
 ### Environment
 Our implementation of DCF can be run in a Linux (Ubuntu 14.04.3 LTS) with OpenSSL libiary environment. 
 
-Install OpenSSL, refer to https://www.openssl.org. to learn more about OpenSSL.
+Install OpenSSL (Please refer to https://www.openssl.org to learn more.
 
 ```txt
 sudo apt-get install openssl
