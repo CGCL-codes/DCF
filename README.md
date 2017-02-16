@@ -21,7 +21,7 @@ Generate DCF according to the expected maximum item number, expected false posit
 DynamicCuckooFilter* dcf = new DynamicCuckooFilter(config.item_num, config.exp_FPR);
 ```
 
-The expected building block number of DCF is set to 6 by default and can also be modified as follows
+The expected building block number of DCF is set to 6 by default and can also be modified as follow
 
 ```c++
 DynamicCuckooFilter* dcf = new DynamicCuckooFilter(config.item_num, config.exp_FPR, config.exp_BBN);
