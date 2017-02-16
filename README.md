@@ -38,7 +38,6 @@ dcf->compact() //compact DCF
 ```
 
 ## How to use?
-
 ### Build and run the example:
 Our implementation of DCF can be run in a Linux (Ubuntu 14.04.3 LTS) with OpenSSL libiary environment. See more details in https://www.openssl.org.
 
