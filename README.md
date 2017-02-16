@@ -38,8 +38,16 @@ dcf->compact() //compact DCF
 ```
 
 ## How to use?
-### Build and run the example:
-Our implementation of DCF can be run in a Linux (Ubuntu 14.04.3 LTS) with OpenSSL libiary environment. See more details in https://www.openssl.org.
+### Environment
+Our implementation of DCF can be run in a Linux (Ubuntu 14.04.3 LTS) with OpenSSL libiary environment. 
+
+Install OpenSSL, refer to https://www.openssl.org. to learn more about OpenSSL.
+
+```txt
+sudo apt-get install openssl
+sudo apt-get install libssl-dev
+```
+Build and run the example
 
 ```txt
 cd src/
@@ -48,7 +56,7 @@ make test
 ```
 
 
-### Configurations and Results
+### Configurations
 Configurations including false pisitive, item number and dataset path can be costomized in "configuration/config.txt". Change the value after the symbol "=" ONLY!!!
 
 ```txt
@@ -57,17 +65,22 @@ item number = 1000000
 input file path = input/input2.txt
 ```
 
-Results are show in "output/results.txt", including false positive, fingerprint size, building block number, operation time consumed and etc.
+### Results
+Results are shown in "output/results.txt", including false positive, fingerprint size, building block number, operation time consumed and etc. In the following is the metrics of DCF when dealing with 1,000,000 items (including insert/query/delete/compact operation).
 
 ```txt
        item_num        exp_FPR     actual_FPR     actual_BBN   F_size(bits) space_cost(MB)      I_time(s)      Q_time(s)      D_time(s)    C_rate
         1000000           0.02       0.009292              9             12        1.76947       0.784629        1.05502        1.29057         1
 ```
-
+In the following is the comparison of DCF and DBF when dealing with 46,080 items (including insert/query/delete operation).
+```txt
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+```
+DCF outperforms DBF by XXXXXXXXXXXXXXXXXXXXXX
 
 ## Author and Copyright
 
-DCF is developed in Big Data Technology and System Lab, Services Computing Technology and System Lab, School of Computer Science and Technology, Huazhong University of Science and Technology Wuhan, China by Liangyi Liao (liaoliangyi@hust.edu.cn), Hanhua Chen (chen@hust.edu.cn), Hai Jin (hjin@hust.edu.cn)
+DCF is developed in Big Data Technology and System Lab, Services Computing Technology and System Lab, School of Computer Science and Technology, Huazhong University of Science and Technology, Wuhan, China by Liangyi Liao (liaoliangyi@hust.edu.cn), Hanhua Chen (chen@hust.edu.cn), Hai Jin (hjin@hust.edu.cn)
 
 Copyright (C) 2017, [STCS & CGCL](http://grid.hust.edu.cn/) and [Huazhong University of Science and Technology](http://www.hust.edu.cn).
 
