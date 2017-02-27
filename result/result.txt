@@ -1,0 +1,2 @@
+       item_num        exp_FPR     actual_FPR     actual_BBN   F_size(bits) space_cost(MB)      I_time(s)      Q_time(s)      D_time(s)    C_rate
+        1000000           0.02       0.007366              5             12          1.875       0.855738       0.936381        1.06508         1

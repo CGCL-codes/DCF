@@ -153,7 +153,8 @@ string* Read_Dataset(const Config config, const string path){
 	vector<string> tokens;
 	size_t item_count = 0;
 	string *input_data = new string[config.item_num];
-	while (ss >> buff){
+	while (item_count<config.item_num){
+		ss >> buff;
 		tokens.push_back(buff);
 		input_data[item_count] = buff;
 		item_count ++;
@@ -163,7 +164,7 @@ string* Read_Dataset(const Config config, const string path){
 
 void Print_Info(Config config, Metric metric){
 
-	ofstream out("result.txt");
+	ofstream out("./result/result.txt");
 
 	out << setw(15) << "item_num" << setw(15) << "exp_FPR"
 		<< setw(15) << "actual_FPR" << setw(15) << "actual_BBN" << setw(15) << "F_size(bits)"
@@ -180,7 +181,7 @@ void Print_Info(Config config, Metric metric){
 
 int main(int argc, char* argv[]){
 
-	string config_path = "config.txt";
+	string config_path = "./configuration/config.txt";
 	Config config = Read_Config(config_path);
 
 	string dataset_path = config.dataset_path;

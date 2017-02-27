@@ -5,8 +5,6 @@
  *      Author: liaoliangyi
  */
 
- // This file defines the data structure we frequently used.
-
 #ifndef UINT_H_
 #define UINT_H_
 

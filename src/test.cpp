@@ -1,12 +1,3 @@
-/*
- * test.cpp
- *
- *  Created on: Dec 21, 2016
- *      Author: liaoliangyi
- */
-
-// This file shows an example of the usage of most of the APIs
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <iostream>
@@ -16,7 +7,6 @@
 #include <time.h>
 #include <vector>
 #include "dynamiccuckoofilter.h"
-
 
 using namespace std;
 
@@ -43,19 +33,15 @@ typedef struct{
 
 
 
-
 Metric test(const Config config, string *data){
 
 	Metric metric;
-	metric.exp_BBN = 6;
-	//generate a DCF
 	DynamicCuckooFilter* dcf = new DynamicCuckooFilter(config.item_num, config.exp_FPR);
 
 
 	//**********insert**********
 	metric.I_time = clock();
 	for(size_t i = 0; i<config.item_num; i++){
-		//insert an item into DCF 
 		dcf->insertItem(data[i].c_str());
 	}
 	metric.I_time = clock() - metric.I_time;
@@ -69,7 +55,6 @@ Metric test(const Config config, string *data){
 
 	metric.Q_time = clock();
 	for(size_t i = 0; i<config.item_num; i++){
-		// query an item in DCF to determine the existence
 		if(dcf->queryItem(data[i].c_str()) == false){
 			cout << "Item not found" << endl;
 		};
@@ -97,7 +82,6 @@ Metric test(const Config config, string *data){
 	size_t count = 0;
 	metric.D_time = clock();
 	while(count < config.item_num){
-		// delete an item from DCF
 		dcf->deleteItem(data[count].c_str());
 		count += 1; //delete all the items
 	}
@@ -108,7 +92,6 @@ Metric test(const Config config, string *data){
 	//**********compact**********
 
 	int size_before = dcf->cf_list->num;
-	// an example of the compact process
 	dcf->compact();
 	int size_after = dcf->cf_list->num;
 
@@ -152,10 +135,8 @@ Config Read_Config(const string path){
 	string config_buff;
 	Config configuration;
 	getline(in_config, config_buff);
-//	configuration.exp_FPR = atof(config_buff.c_str());
 	configuration.exp_FPR = atof(Get_Value(config_buff).c_str());
 	getline(in_config, config_buff);
-//	configuration.item_num = atof(config_buff.c_str());
 	configuration.item_num = atof(Get_Value(config_buff).c_str());
 	getline(in_config, config_buff);
 	configuration.dataset_path = Get_Value(config_buff);
@@ -176,7 +157,8 @@ string* Read_Dataset(const Config config, const string path){
 	vector<string> tokens;
 	size_t item_count = 0;
 	string *input_data = new string[config.item_num];
-	while (ss >> buff){
+	while (item_count < config.item_num){
+		ss >> buff;
 		tokens.push_back(buff);
 		input_data[item_count] = buff;
 		item_count ++;
@@ -186,15 +168,15 @@ string* Read_Dataset(const Config config, const string path){
 
 void Print_Info(Config config, Metric metric){
 
-	ofstream out("output/result.txt");
+	ofstream out("./result/result.txt");
 
-	out << setw(10) << "item_num" << setw(15) << "exp_FPR"
+	out << setw(15) << "item_num" << setw(15) << "exp_FPR"
 		<< setw(15) << "actual_FPR" << setw(15) << "actual_BBN" << setw(15) << "F_size(bits)"
 		<< setw(15) << "space_cost(MB)"
 		<< setw(15) << "I_time(s)" << setw(15) << "Q_time(s)" << setw(15) << "D_time(s)" << setw(10) << "C_rate"
 		<< endl;
 
-	out << setw(10) << config.item_num << setw(15) << config.exp_FPR
+	out << setw(15) << config.item_num << setw(15) << config.exp_FPR
 		<< setw(15) << metric.actual_FPR << setw(15) << metric.actual_BBN << setw(15) << metric.F_size
 		<< setw(15) << metric.space_cost
 		<< setw(15) << metric.I_time << setw(15) << metric.Q_time << setw(15) << metric.D_time << setw(10) << metric.C_rate
@@ -206,7 +188,7 @@ void Print_Info(Config config, Metric metric){
 
 int main(int argc, char* argv[]){
 
-	string config_path = "configuration/config.txt";
+	string config_path = "./configuration/config.txt";
 	Config config = Read_Config(config_path);
 
 	string dataset_path = config.dataset_path;

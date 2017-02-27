@@ -1,3 +1,3 @@
 false positive = 0.02
 item number = 1000000
-input file path = input/input2.txt
+input file path = ./input/input.txt

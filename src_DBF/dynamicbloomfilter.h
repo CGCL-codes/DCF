@@ -46,7 +46,7 @@ public:
 	// the link list of building blocks
 	LinkList* sbf_list;
 
-	DynamicBloomFilter(const size_t capacity, const double false_positive, const size_t exp_block_num = 8);
+	DynamicBloomFilter(const size_t capacity, const double false_positive, const size_t exp_block_num = 6);
 	DynamicBloomFilter(int n,  int m);
 	~DynamicBloomFilter();
 
@@ -112,15 +112,15 @@ bool DynamicBloomFilter::insertItem(const char* item){
 		curSBF = getNextSBF(curSBF);
 	}
 	//duplicate filtering
-	if(!this->queryItem(item)){
-		if(curSBF->insertItem(hash_val)){
-			this->counter += 1;
-		}
-	}
+//	if(!this->queryItem(item)){
+//		if(curSBF->insertItem(hash_val)){
+//			this->counter += 1;
+//		}
+//	}
 
-	// if(curSBF->insertItem(hash_val)){
-	// 	this->counter += 1;
-	// }
+	if(curSBF->insertItem(hash_val)){
+		this->counter += 1;
+	}
 
 	return true;
 }

@@ -1,0 +1,165 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<iostream>
+#include<iomanip>
+#include<time.h>
+#include"dynamiccuckoofilter.h"
+
+
+using namespace std;
+
+typedef struct{
+	size_t item_num;
+	double exp_FPR;
+	int exp_BBN;
+	double actual_FPR;
+	int actual_BBN;
+	int F_size;
+	double space_cost;
+	double I_time;
+	double Q_time;
+	double D_time;
+	double C_rate;
+}Metric;
+
+void test(Metric &metric){
+
+	size_t item_num = metric.item_num;
+	double exp_FPR = metric.exp_FPR;
+	int exp_BBN = metric.exp_BBN;
+
+
+	DynamicCuckooFilter* dcf = new DynamicCuckooFilter(item_num, exp_FPR, exp_BBN);
+
+
+	//**********insert**********
+	long* addset = (long*) malloc(sizeof(long) * item_num);
+	metric.I_time = clock();
+	for(size_t i = 0; i<item_num; i++){
+//		dcf->insertItem(item_array[i]);
+		char item[10] = {0};
+		addset[i] = rand();
+		sprintf(item, "%ld", addset[i]);
+		dcf->insertItem(item);
+	}
+	metric.I_time = clock() - metric.I_time;
+	metric.I_time = metric.I_time/CLOCKS_PER_SEC;
+
+	metric.space_cost = dcf->size_in_mb();
+
+	//**********query**********
+
+	int false_positive_count = 0;
+
+	metric.Q_time = clock();
+	for(size_t i = 0; i<item_num; i++){
+//		dcf->queryItem(item_array[i]);
+		char item[10] = {0};
+		sprintf(item, "%ld", addset[i]);
+		if(dcf->queryItem(item) == false){
+			cout << "Item not found" << endl;
+		};
+	}
+	metric.Q_time = clock() - metric.Q_time;
+	metric.Q_time = metric.Q_time/CLOCKS_PER_SEC;
+
+	//calculate false
+	for(size_t i = 0; i<item_num; i++){
+		char item[10] = {0};
+		sprintf(item, "%ld", i + 1000*1000);
+		if(dcf->queryItem(item)){
+			false_positive_count++;
+		}
+	}
+
+
+	metric.actual_FPR = (double)false_positive_count/item_num;
+//	printf("false positve rate: %f\n", actual_FPR);
+
+
+	//**********delete**********
+
+
+	size_t count = 0;
+	metric.D_time = clock();
+	while(count < item_num){
+		char item[10] = {0};
+		sprintf(item, "%ld", addset[count]);
+		dcf->deleteItem(item);
+		count += 1; //delete all the items
+	}
+	metric.D_time = clock() - metric.D_time;
+	metric.D_time = metric.D_time/CLOCKS_PER_SEC;
+
+
+	//**********compact**********
+
+	int size_before = dcf->cf_list->num;
+	dcf->compact();
+	int size_after = dcf->cf_list->num;
+
+	metric.actual_BBN = size_before;
+	metric.C_rate = (double)(size_before-size_after)/size_before;
+	metric.F_size = dcf->getFingerprintSize();
+
+
+}
+
+
+int main(int argc, char* argv[]){
+
+
+	cout << setw(15) << "item_num" << setw(15) << "exp_FPR"
+		 << setw(15) << "actual_FPR" << setw(15) << "actual_BBN" << setw(15) << "F_size(bits)"
+		 << setw(15) << "space_cost(MB)"
+		 << setw(15) << "I_time(s)" << setw(15) << "Q_time(s)" << setw(15) << "D_time(s)" << setw(10) << "C_rate"
+		 << endl;
+
+	Metric example;
+	example.item_num = 1000 * 1000;
+	example.exp_FPR = 0.02;
+	example.exp_BBN = 6;
+
+	test(example);
+
+
+	cout << setw(15) << example.item_num << setw(15) << example.exp_FPR
+		 << setw(15) << example.actual_FPR << setw(15) << example.actual_BBN << setw(15) << example.F_size
+		 << setw(15) << example.space_cost
+		 << setw(15) << example.I_time << setw(15) << example.Q_time << setw(15) << example.D_time << setw(10) << example.C_rate
+		 << endl;
+
+
+	example.item_num = 1000 * 1000;
+	example.exp_FPR = 0.001;
+	example.exp_BBN = 8;
+
+	test(example);
+
+
+	cout << setw(15) << example.item_num << setw(15) << example.exp_FPR << setw(15) << example.exp_BBN
+		 << setw(15) << example.actual_FPR << setw(15) << example.actual_BBN << setw(15) << example.F_size
+		 << setw(15) << example.space_cost
+		 << setw(15) << example.I_time << setw(15) << example.Q_time << setw(15) << example.D_time << setw(10) << example.C_rate
+		 << endl;
+
+
+
+	for(double fraction = 0.2; fraction < 1.5; fraction += 0.2) {
+		Metric benchmark;
+		benchmark.item_num = 46080 * fraction;
+		benchmark.exp_FPR = 0.012;
+		benchmark.exp_BBN = 6;
+		test(benchmark);
+
+
+		cout << setw(12) << "46080 * " << fraction << setw(15) << benchmark.exp_FPR << setw(15) << benchmark.exp_BBN
+			 << setw(15) << benchmark.actual_FPR << setw(15) << benchmark.actual_BBN << setw(15) << benchmark.F_size
+			 << setw(15) << benchmark.space_cost
+			 << setw(15) << benchmark.I_time << setw(15) << benchmark.Q_time << setw(15) << benchmark.D_time << setw(10) << benchmark.C_rate
+			 << endl;
+	}
+
+
+}
+

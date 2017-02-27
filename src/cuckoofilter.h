@@ -1,13 +1,3 @@
-/*
- * cuckoofilter.h
- *
- *  Created on: Dec 21, 2016
- *      Author: liaoliangyi
- */
-
-// The implementation of cuckoo filter
-// Inspired by the thesis "Cuckoo Filter: Practically Better Than Bloom" in proceedings of ACM CoNEXT 2014 
-// This file is rewrite according to the source code of cuckoo filter (https://github.com/efficient/cuckoofilter)
 #ifndef CUCKOOFILTER_H_
 #define CUCKOOFILTER_H_
 
@@ -233,14 +223,6 @@ bool CuckooFilter::queryImpl(const size_t index, const uint32_t fingerprint){
 		const char* p = bucket[index].bit_array;
 		uint64_t bits = *(uint64_t*)p;
 		return hasvalue16(bits, fingerprint);
-	}else if(fingerprint_size == 24){
-		const char* p = bucket[index].bit_array;
-		uint64_t bits = *(uint64_t*)p;
-		return hasvalue24(bits, fingerprint);
-	}else if(fingerprint_size == 32){
-		const char* p = bucket[index].bit_array;
-		uint64_t bits = *(uint64_t*)p;
-		return hasvalue32(bits, fingerprint);
 	}else{
 		return false;
 	}

@@ -1,17 +1,5 @@
-/*
- * dynamiccuckoofilter.h
- *
- *  Created on: Dec 21, 2016
- *      Author: liaoliangyi
- */
-
- // This file is the implementation of dynamiccuckoofilter
- // The function "upperpower2" is apart of the source code written by Bin Fan , David G. Andersen and Michael Kaminsky 
-
 #ifndef DYNAMICCUCKOOFILTER_H_
 #define DYNAMICCUCKOOFILTER_H_
-
-
 
 
 #include"cuckoofilter.h"
@@ -51,7 +39,7 @@ public:
 	LinkList* cf_list;
 
 	//construction & distruction functions
-	DynamicCuckooFilter(const size_t capacity, const double false_positive, const size_t exp_block_num = 8);
+	DynamicCuckooFilter(const size_t capacity, const double false_positive, const size_t exp_block_num = 6);
 	~DynamicCuckooFilter();
 
 	//insert & query & delete functions
@@ -297,7 +285,7 @@ int DynamicCuckooFilter::getFingerprintSize(){
 }
 
 float DynamicCuckooFilter::size_in_mb(){
-	return fingerprint_size * 4.0 * single_table_length * cf_list->num / 8 / 1000 / 1000;
+	return fingerprint_size * 4.0 * single_table_length * cf_list->num / 8 / 1024 / 1024;
 }
 
 uint64_t DynamicCuckooFilter::upperpower2(uint64_t x) {
