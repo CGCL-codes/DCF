@@ -72,7 +72,7 @@ Results are shown in "output/results.txt", including false positive, fingerprint
        item_num        exp_FPR     actual_FPR     actual_BBN   F_size(bits) space_cost(MB)      I_time(s)      Q_time(s)      D_time(s)    C_rate
         1000000           0.02       0.007366              5             12          1.875       0.894058       0.957675        1.08864         1
 ```
-In the following is the comparison of DCF and DBF when dealing with 1,000,080 items (including insert/query/delete operation).
+In the following is the comparison of DCF and DBF when dealing with 1,000,000 items (including insert/query/delete operation).
 ```txt
        item_num        exp_FPR     actual_FPR     actual_BBN   F_size(bits) space_cost(MB)      I_time(s)      Q_time(s)      D_time(s)    C_rate
         1000000           0.02       0.020071              7              0        6.59458        1.11154        1.51357        2.13479         0
