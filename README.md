@@ -5,7 +5,7 @@ The Dynamic Cuckoo Filter (DCF) is an efficient approximate membership test data
 
 * The DCF design is the first to achieve both reliable item deletion and flexibly extending/reducing for approximate set representation and membership testing
 * DCF outperforms the state-of-the-art DBF design in terms of the capability of reliable item deletion
-* A DCF reduces the required memory space of the DBF by 75% as well as improving the speeds of inserting and membership testing by 50% and 80%, respectively.
+* A DCF reduces the required memory space of the DBF by 75% as well as improving the speeds of inserting and membership testing by 50% to 80%.
 
 ## Structure of DCF
 
@@ -74,9 +74,10 @@ Results are shown in "output/results.txt", including false positive, fingerprint
 ```
 In the following is the comparison of DCF and DBF when dealing with 46,080 items (including insert/query/delete operation).
 ```txt
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+       item_num        exp_FPR     actual_FPR     actual_BBN   F_size(bits) space_cost(MB)      I_time(s)      Q_time(s)      D_time(s)    C_rate
+        1000000           0.02       0.011376              8              0        1.76947       1.046172        1.91821        1.72076         1
 ```
-DCF outperforms DBF by XXXXXXXXXXXXXXXXXXXXXX
+After transform operation time to speed, the DCF improving the speeds of inserting and membership testing by 50% to 80%.
 
 ## Author and Copyright
 
