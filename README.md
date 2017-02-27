@@ -70,12 +70,13 @@ Results are shown in "output/results.txt", including false positive, fingerprint
 
 ```txt
        item_num        exp_FPR     actual_FPR     actual_BBN   F_size(bits) space_cost(MB)      I_time(s)      Q_time(s)      D_time(s)    C_rate
-        1000000           0.02       0.009292              9             12        1.76947       0.784629        1.05502        1.29057         1
+        1000000           0.02       0.007366              5             12          1.875       0.849866       0.923435        1.03723         1
 ```
 In the following is the comparison of DCF and DBF when dealing with 46,080 items (including insert/query/delete operation).
 ```txt
        item_num        exp_FPR     actual_FPR     actual_BBN   F_size(bits) space_cost(MB)      I_time(s)      Q_time(s)      D_time(s)    C_rate
-        1000000           0.02       0.011376              8              0        1.76947       1.046172        1.91821        1.72076         1
+        1000000           0.02       0.020073              7              0        6.59458        1.65084        1.97976        3.43012         0
+
 ```
 After transform operation time to speed, the DCF improving the speeds of inserting and membership testing by 50% to 80%.
 
