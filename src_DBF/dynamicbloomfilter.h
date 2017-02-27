@@ -112,15 +112,15 @@ bool DynamicBloomFilter::insertItem(const char* item){
 		curSBF = getNextSBF(curSBF);
 	}
 	//duplicate filtering
-//	if(!this->queryItem(item)){
-//		if(curSBF->insertItem(hash_val)){
-//			this->counter += 1;
-//		}
-//	}
-
-	if(curSBF->insertItem(hash_val)){
-		this->counter += 1;
+	if(!this->queryItem(item)){
+		if(curSBF->insertItem(hash_val)){
+			this->counter += 1;
+		}
 	}
+
+	// if(curSBF->insertItem(hash_val)){
+	// 	this->counter += 1;
+	// }
 
 	return true;
 }
