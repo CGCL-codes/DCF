@@ -39,7 +39,7 @@ dcf->compact() //compact DCF
 
 ## How to use?
 ### Environment
-Our implementation of DCF can be run in a Linux (Ubuntu 14.04.3 LTS) with OpenSSL library environment. 
+We implement DCF in a Linux (Ubuntu 14.04.3 LTS) with an Intel(R) Core(TM) i5-2430M CPU @2.4GHz and OpenSSL library environment. 
 
 Install OpenSSL (Please refer to https://www.openssl.org to learn more).
 
@@ -66,16 +66,15 @@ input file path = input/input2.txt
 ```
 
 ### Results
-Results are shown in "output/results.txt", including false positive, fingerprint size, building block number, operation time consumed and etc. In the following is the metrics of DCF when dealing with 1,000,000 items (including insert/query/delete/compact operation).
+Results are shown in "output/results.txt", including false positive, fingerprint size, building block number, operation time consumed and etc. In the following is the comparison of DCF and DBF when dealing with 1,000,000 items (including insert/query/delete/compact operation).
 
 ```txt
-       item_num        exp_FPR     actual_FPR     actual_BBN   F_size(bits) space_cost(MB)      I_time(s)      Q_time(s)      D_time(s)    C_rate
-        1000000           0.02       0.007366              5             12          1.875       0.894058       0.957675        1.08864         1
-```
-In the following is the comparison of DCF and DBF when dealing with 1,000,000 items (including insert/query/delete operation).
-```txt
-       item_num        exp_FPR     actual_FPR     actual_BBN   F_size(bits) space_cost(MB)      I_time(s)      Q_time(s)      D_time(s)    C_rate
-        1000000           0.02       0.020071              7              0        6.59458        1.11154        1.51357        2.13479         0
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+       item_num   ///   exp_FPR  ///   actual_FPR  ///   actual_BBN  /// F_size(bits)  /// space_cost(MB)  ///    I_time(s)  ///    Q_time(s)  ///    D_time(s) ///   C_rate ///
+        1000000   ///      0.02  ///     0.007366  ///            5  ///           12  ///          1.875  ///     0.894058  ///     0.957675  ///      1.08864 ///        1 ///
+        1000000   ///      0.02  ///     0.020071  ///            7  ///            0  ///        6.59458  ///      1.11154  ///      1.51357  ///      2.13479 ///        0 ///
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 ```
 After transform operation time to speed, the DCF improving the speeds of inserting and membership testing by 50% to 80%.
 
