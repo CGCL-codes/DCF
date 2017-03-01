@@ -5,7 +5,7 @@ The Dynamic Cuckoo Filter (DCF) is an efficient approximate membership test data
 
 * The DCF design is the first to achieve both reliable item deletion and flexibly extending/reducing for approximate set representation and membership testing
 * DCF outperforms the state-of-the-art DBF design in terms of the capability of reliable item deletion
-* A DCF reduces the required memory space of the DBF by 75% as well as improving the speeds of inserting and membership testing by 50% to 80%.
+* A DCF reduces the required memory space of the DBF by 75% as well as improving the speeds of insert/query/delete operation by 30% to 80%.
 
 ## Structure of DCF
 
@@ -68,15 +68,28 @@ input file path = input/input2.txt
 ### Results
 Results are shown in "output/results.txt", including false positive, fingerprint size, building block number, operation time consumed and etc. In the following is the comparison of DCF and DBF when dealing with 1,000,000 items (including insert/query/delete/compact operation).
 
+Metrics:
+item_num: total number inserted/queried/deleted
+exp_FPR: the expected false positive rate
+actual_FPR: the false positive rate that we measured
+actual_BBN: the building block number that we observed
+F_size: fingerprint size
+space_cost: space overhead of data structure
+I_time: insert time
+Q_time: query time
+D_time: delete time
+C_rate: compact rate
+
 ```txt
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-       item_num   ///   exp_FPR  ///   actual_FPR  ///   actual_BBN  /// F_size(bits)  /// space_cost(MB)  ///    I_time(s)  ///    Q_time(s)  ///    D_time(s) ///   C_rate ///
-        1000000   ///      0.02  ///     0.007366  ///            5  ///           12  ///          1.875  ///     0.894058  ///     0.957675  ///      1.08864 ///        1 ///
-        1000000   ///      0.02  ///     0.020071  ///            7  ///            0  ///        6.59458  ///      1.11154  ///      1.51357  ///      2.13479 ///        0 ///
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///    item_num        exp_FPR     actual_FPR     actual_BBN   F_size(bits) space_cost(MB)      I_time(s)      Q_time(s)      D_time(s)    C_rate///
+///     1000000           0.02       0.007366              5             12          1.875       0.894058       0.957675        1.08864         1///
+///     1000000           0.02       0.020114              7              0        6.59458        1.26271        1.51654        1.94153         0///
+///                                                                                     4X          1.34X          1.57X          1.79X          ///
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 ```
-After transform operation time to speed, the DCF improving the speeds of inserting and membership testing by 50% to 80%.
+After transform operation time to speed, the DCF improving the speeds of insert/query/delete by 30% to 80% and 4X space efficiency.
 
 ## Author and Copyright
 
