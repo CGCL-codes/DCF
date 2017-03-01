@@ -69,15 +69,25 @@ input file path = input/input2.txt
 Results are shown in "output/results.txt", including false positive, fingerprint size, building block number, operation time consumed and etc. In the following is the comparison of DCF and DBF when dealing with 1,000,000 items (including insert/query/delete/compact operation).
 
 Metrics:
+
 item_num: total number inserted/queried/deleted
+
 exp_FPR: the expected false positive rate
+
 actual_FPR: the false positive rate that we measured
+
 actual_BBN: the building block number that we observed
+
 F_size: fingerprint size
+
 space_cost: space overhead of data structure
+
 I_time: insert time
+
 Q_time: query time
+
 D_time: delete time
+
 C_rate: compact rate
 
 ```txt
