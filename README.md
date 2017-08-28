@@ -107,4 +107,8 @@ DCF is developed in Big Data Technology and System Lab, Services Computing Techn
 
 Copyright (C) 2017, [STCS & CGCL](http://grid.hust.edu.cn/) and [Huazhong University of Science and Technology](http://www.hust.edu.cn).
 
+## Publication
 
+If you want to know more detailed information, please refer to this paper:
+
+Hanhua Chen, Liangyi Liao, Hai Jin, Jie Wu, "The Dynamic Cuckoo Filter," Proceedings of the 25th IEEE International Conference on Network Protocols (ICNP 2017), Toronto, Canada, Oct. 10-13, 2017.
