@@ -57,7 +57,7 @@ make test
 
 
 ### Configurations
-Configurations including false pisitive, item number and dataset path can be costomized in "configuration/config.txt". Change the value after the symbol "=" ONLY!!!
+Configurations including false pisitive, item number and dataset path can be costomized in "configuration/config.txt". 
 
 ```txt
 false positive = 0.02
