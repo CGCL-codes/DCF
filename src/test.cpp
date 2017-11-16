@@ -18,8 +18,6 @@ typedef struct{
 
 
 typedef struct{
-//	size_t item_num;
-//	double exp_FPR;
 	int exp_BBN;
 	double actual_FPR;
 	int actual_BBN;
@@ -73,7 +71,6 @@ Metric test(const Config config, string *data){
 
 
 	metric.actual_FPR = (double)false_positive_count/config.item_num;
-//	printf("false positve rate: %f\n", actual_FPR);
 
 
 	//**********delete**********

@@ -1,0 +1,21 @@
+objects = test.o dynamicbloomfilter.o countingbloomfilter.o hashfunctions.o 
+
+test: $(objects)
+	g++ -Wall -o test $(objects) -lssl -lcrypto
+
+hashfunctions.o: src/hashfunctions.cpp src/hashfunctions.h
+	g++ -Wall -c src/hashfunctions.cpp -lssl -lcrypto
+
+countingbloomfilter.o: src/countingbloomfilter.cpp src/countingbloomfilter.h
+	g++ -Wall -c src/countingbloomfilter.cpp -lssl -lcrypto
+
+dynamicbloomfilter.o: src/dynamicbloomfilter.cpp src/countingbloomfilter.h
+	g++ -Wall -c src/dynamicbloomfilter.cpp -lssl -lcrypto
+
+test.o: src/test.cpp src/dynamicbloomfilter.h
+	g++ -Wall -c src/test.cpp -lssl -lcrypto
+
+
+.PHONY : clean
+clean :
+	rm *.o

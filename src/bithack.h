@@ -27,4 +27,4 @@
 #define hasvalue32(x,n) (haszero32((x) ^ (0x00000001000000010000000100000001ULL * (n))))
 
 
-#endif
+#endif //BITHACK_H_

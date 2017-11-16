@@ -6,7 +6,8 @@
 #include <iomanip>
 #include <time.h>
 #include <vector>
-#include"dynamicbloomfilter.h"
+
+#include "dynamicbloomfilter.h"
 
 using namespace std;
 
@@ -37,7 +38,6 @@ Metric test(const Config config, string *data){
 
 	Metric metric;
 	DynamicBloomFilter* dbf = new DynamicBloomFilter(config.item_num, config.exp_FPR);
-
 
 	//**********insert**********
 	metric.I_time = clock();
